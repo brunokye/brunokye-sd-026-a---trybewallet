@@ -1,4 +1,4 @@
-.header-container {
+.header-container , .expense-container {
   display: flex;
   gap: 20px;
   margin: 20px;
