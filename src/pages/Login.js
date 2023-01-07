@@ -48,7 +48,7 @@ class Login extends Component {
           <input
             id="input-email"
             data-testid="email-input"
-            type="text"
+            type="email"
             name="email"
             placeholder="Digite seu email"
             onChange={ handleChange }
@@ -57,7 +57,7 @@ class Login extends Component {
           <input
             id="input-password"
             data-testid="password-input"
-            type="text"
+            type="password"
             name="password"
             placeholder="Digite sua senha"
             onChange={ handleChange }
