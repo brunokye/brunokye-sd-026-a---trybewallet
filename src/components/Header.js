@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 class Header extends Component {
   render() {
     const { email, expenses } = this.props;
-    console.log(expenses);
 
     return (
       <div className="header-container">
