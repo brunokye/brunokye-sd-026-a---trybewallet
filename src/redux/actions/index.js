@@ -3,6 +3,7 @@ import getCurrencies from '../../services/Api';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const REQUEST_CURRENCIES = 'REQUEST_CURRENCIES';
 export const NEW_EXPENSE = 'NEW_EXPENSE';
+export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 
 export const loginSuccess = (email) => ({
   type: LOGIN_SUCCESS,
@@ -28,6 +29,13 @@ export const newExpense = async (dispatch, expense) => {
       ...expense,
       exchangeRates,
     },
+  });
+};
+
+export const deleteExpense = async (dispatch, expense) => {
+  dispatch({
+    type: DELETE_EXPENSE,
+    payload: expense,
   });
 };
 

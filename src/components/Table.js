@@ -2,8 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import '../styles/table.css';
+import { deleteExpense } from '../redux/actions';
 
 class Table extends Component {
+  handleDelete = (id) => {
+    const { dispatch, expenses } = this.props;
+    const filterExpense = expenses.filter((expense) => expense.id !== id);
+
+    deleteExpense(dispatch, filterExpense);
+  };
+
   render() {
     const { expenses } = this.props;
 
@@ -35,7 +43,20 @@ class Table extends Component {
                 <td>{ Number(exchangeRates[currency].ask).toFixed(2) }</td>
                 <td>{ Number(exchangeRates[currency].ask * value).toFixed(2) }</td>
                 <td>{ exchangeRates[currency].name }</td>
-                <td>Editar/Excluir</td>
+                <td className="edit-delete">
+                  <button
+                    type="button"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    data-testid="delete-btn"
+                    type="button"
+                    onClick={ () => this.handleDelete(id) }
+                  >
+                    Excluir
+                  </button>
+                </td>
               </tr>
             )
           ))}
