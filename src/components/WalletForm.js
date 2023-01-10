@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchCurrencies, newExpense } from '../redux/actions';
+import { fetchCurrencies, newExpense, saveEdit } from '../redux/actions';
 
 class WalletForm extends Component {
   state = {
@@ -22,6 +22,11 @@ class WalletForm extends Component {
   handleChange = ({ target }) => {
     const { name, value } = target;
     this.setState({ [name]: value });
+  };
+
+  handleEdit = () => {
+    const { dispatch, wallet: { idToEdit } } = this.props;
+    saveEdit(dispatch, { ...this.state, id: idToEdit });
   };
 
   handleSubmit = (event) => {
@@ -45,9 +50,9 @@ class WalletForm extends Component {
   };
 
   render() {
-    const { currencies } = this.props;
+    const { wallet: { currencies, editor } } = this.props;
     const { value, currency, method, tag, description } = this.state;
-    const { handleChange, handleSubmit } = this;
+    const { handleChange, handleEdit, handleSubmit } = this;
 
     return (
       <div className="expense-container">
@@ -104,19 +109,30 @@ class WalletForm extends Component {
           onChange={ handleChange }
         />
 
-        <button
-          type="submit"
-          onClick={ handleSubmit }
-        >
-          Adicionar despesa
-        </button>
+        { editor
+          ? (
+            <button
+              type="submit"
+              onClick={ handleEdit }
+            >
+              Editar despesa
+            </button>
+          )
+          : (
+            <button
+              type="submit"
+              onClick={ handleSubmit }
+            >
+              Adicionar despesa
+            </button>
+          )}
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  currencies: state.wallet.currencies,
+  ...state,
 });
 
 WalletForm.propTypes = {

@@ -3,6 +3,8 @@ import getCurrencies from '../../services/Api';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const REQUEST_CURRENCIES = 'REQUEST_CURRENCIES';
 export const NEW_EXPENSE = 'NEW_EXPENSE';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
+export const SAVE_EDIT = 'SAVE_EDIT';
 export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 
 export const loginSuccess = (email) => ({
@@ -14,11 +16,6 @@ export const requestCurrencies = (currencies) => ({
   type: REQUEST_CURRENCIES,
   payload: currencies,
 });
-
-// export const newExpense = (expense) => ({
-//   type: NEW_EXPENSE,
-//   payload: expense,
-// });
 
 export const newExpense = async (dispatch, expense) => {
   const exchangeRates = await getCurrencies();
@@ -32,7 +29,21 @@ export const newExpense = async (dispatch, expense) => {
   });
 };
 
-export const deleteExpense = async (dispatch, expense) => {
+export const editExpense = (dispatch, id) => {
+  dispatch({
+    type: EDIT_EXPENSE,
+    payload: id,
+  });
+};
+
+export const saveEdit = async (dispatch, changes) => {
+  dispatch({
+    type: SAVE_EDIT,
+    payload: changes,
+  });
+};
+
+export const deleteExpense = (dispatch, expense) => {
   dispatch({
     type: DELETE_EXPENSE,
     payload: expense,
