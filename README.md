@@ -8,9 +8,9 @@ Neste projeto você vai desenvolver uma carteira de controle de gastos com conve
 
 ## Projeto
 
-<div align="center" display="inline">
-<img src="https://i.imgur.com/sFJrHSu.png" alt="Login" width="400px" heigth="209px">
-<img src="https://i.imgur.com/OaMZHJX.png" alt="Cadastro de Despesas" width="400px" heigth="209px">
+<div align="center">
+  <img src="https://i.imgur.com/sFJrHSu.png" alt="Login" width="400px" />
+  <img src="https://i.imgur.com/OaMZHJX.png" alt="Cadastro de Despesas" width="400px" />
 </div>
 
 ## Executar Localmente
